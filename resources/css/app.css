@@ -6,32 +6,19 @@
 }
 
 body {
-    font-family: 'Inter', 'Arsenal', 'Roboto', sans-serif;
+    font-family: 'Inter', 'Arial', sans-serif;
     background: radial-gradient(circle at top left, #1A1A2F, #0F0F1C, #1C1C2C);
     color: #ffffff;
     min-height: 100vh;
-    overflow-x: hidden;
     display: flex;
     flex-direction: column;
 }
 
 /* Контейнер */
 .container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-}
-
-@media (min-width: 640px) {
-    .container {
-        padding: 30px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .container {
-        padding: 40px;
-    }
 }
 
 /* Навигация */
@@ -60,12 +47,6 @@ nav a.text-2xl {
     font-weight: 700;
     color: #B0B0FF;
     text-decoration: none;
-    transition: color 0.3s, transform 0.3s;
-}
-
-nav a.text-2xl:hover {
-    color: #00FFFF;
-    transform: scale(1.03);
 }
 
 nav ul {
@@ -73,31 +54,13 @@ nav ul {
     align-items: center;
     gap: 1.5rem;
     list-style: none;
-    margin: 0;
 }
 
 nav a {
     color: #ffffff;
     text-decoration: none;
     font-size: 1rem;
-    font-weight: 500;
-    position: relative;
-    transition: color 0.3s;
-}
-
-nav a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #8A2BE2;
-    transition: width 0.3s;
-}
-
-nav a:hover::after {
-    width: 100%;
+    transition: color 0.3s ease;
 }
 
 nav a:hover {
@@ -111,52 +74,24 @@ nav a:hover {
     background: none;
     border: none;
     cursor: pointer;
-    transition: color 0.3s, transform 0.3s;
-}
-
-.burger:hover {
-    color: #00FFFF;
-    transform: scale(1.1);
 }
 
 /* Основной контент */
 main {
-    padding-top: 90px; /* Уменьшено под новую высоту nav */
+    padding-top: 90px;
     flex: 1;
-    min-height: calc(100vh - 160px);
 }
 
 /* Заголовки */
 h1 {
     font-size: 2.5rem;
-    font-weight: 700;
     text-align: center;
     margin: 2rem 0 1.5rem;
     color: #B0B0FF;
-    transition: color 0.3s;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
 }
 
-h1:hover {
-    color: #00FFFF;
-}
-
-h2 {
-    font-size: 1.75rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: #ffffff;
-}
-
-@media (min-width: 640px) {
-    h1 {
-        font-size: 3rem;
-    }
-    h2 {
-        font-size: 2rem;
-    }
-}
-
-/* Форма даты рождения */
+/* Форма */
 form {
     display: flex;
     flex-direction: column;
@@ -164,25 +99,15 @@ form {
     background: rgba(45, 45, 79, 0.4);
     padding: 1.5rem;
     border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     max-width: 400px;
-    width: 100%;
     margin: 2rem auto;
-    border: 1px solid rgba(138, 43, 226, 0.3);
-    backdrop-filter: blur(8px);
     gap: 1rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 form label {
     font-size: 1.125rem;
-    font-weight: 500;
     color: #B0B0FF;
-    text-align: center;
-    transition: transform 0.3s;
-}
-
-form:hover label {
-    transform: translateY(-2px);
 }
 
 input[type="date"] {
@@ -194,13 +119,6 @@ input[type="date"] {
     color: #ffffff;
     border: 1px solid #8A2BE2;
     font-size: 1rem;
-    outline: none;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-input[type="date"]:focus {
-    border-color: #00FFFF;
-    box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.3);
 }
 
 button {
@@ -212,88 +130,98 @@ button {
     border: none;
     border-radius: 25px;
     font-size: 1rem;
-    font-weight: 600;
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-    position: relative;
-    overflow: hidden;
+    transition: transform 0.2s ease;
 }
 
 button:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 12px #00FFFF;
 }
 
-button::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    transition: left 0.3s;
-}
-
-button:hover::after {
-    left: 100%;
-}
-
-/* Карточки знаков зодиака */
+/* Сетка для карточек */
 .grid-cols-3 {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
 }
 
+/* Карточка гороскопа */
+.horoscope-card {
+    background: rgba(30, 30, 56, 0.7);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    text-align: left;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+}
+
+.horoscope-card:hover {
+    transform: translateY(-5px);
+}
+
+.horoscope-card h2 {
+    font-size: 1.4rem;
+    color: #B0B0FF;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.horoscope-card p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #E0E0FF;
+    word-wrap: break-word;
+    hyphens: auto;
+    text-align: justify;
+    flex-grow: 1;
+}
+
+/* Карточки на главной */
 .zodiac-card {
     background: #1E1E38;
-    border-radius: 15px;
+    border-radius: 12px;
     padding: 1.5rem;
     text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: 1px solid rgba(138, 43, 226, 0.2);
-    position: relative;
-    overflow: hidden;
+    border: 1px solid rgba(138, 43, 226, 0.3);
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
 .zodiac-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0 15px #8A2BE2;
 }
 
 .zodiac-card a {
     color: #ffffff;
     text-decoration: none;
     font-size: 1.125rem;
-    font-weight: 500;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    transition: color 0.3s;
 }
 
-.zodiac-card a:hover {
-    color: #00FFFF;
+/* Ссылка назад */
+.back-link {
+    display: inline-block;
+    margin: 1rem auto;
+    padding: 0.5rem 1.5rem;
+    background: linear-gradient(45deg, #8A2BE2, #00FFFF);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    transition: transform 0.2s ease;
 }
 
-/* Гороскоп */
-.horoscope-card {
-    background: rgba(30, 30, 56, 0.4);
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: 1px solid rgba(0, 255, 255, 0.2);
-    margin: 2rem auto;
-    max-width: 600px;
-}
-
-.horoscope-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+.back-link:hover {
+    transform: scale(1.05);
 }
 
 /* Футер */
@@ -301,7 +229,6 @@ footer {
     background: rgba(26, 26, 47, 0.9);
     padding: 1.5rem 0;
     text-align: center;
-    border-top: 1px solid rgba(138, 43, 226, 0.3);
     margin-top: auto;
 }
 
@@ -310,85 +237,40 @@ footer .container {
     color: #B0B0FF;
 }
 
-footer .social a {
-    color: #B0B0FF;
-    margin: 0 0.5rem;
-    font-size: 1.25rem;
-    transition: color 0.3s, transform 0.3s;
-}
-
-footer .social a:hover {
-    color: #00FFFF;
-    transform: scale(1.2);
-}
-
-/* Анимация звезд */
-.stars {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
-                radial-gradient(circle, rgba(255, 255, 255, 0.2) 0.5px, transparent 0.5px);
-    background-size: 4px 4px, 6px 6px;
-    animation: twinkle 4s infinite;
-}
-
-@keyframes twinkle {
-    0%, 100% { opacity: 0.8; }
-    50% { opacity: 0.4; }
-}
-
 /* Адаптивность */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
     h1 {
         font-size: 2rem;
     }
 
-    nav {
-        height: 60px;
+    .grid-cols-3 {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
     }
 
-    nav .container {
-        padding: 0 1rem;
+    .horoscope-card {
+        padding: 1.2rem;
+        min-height: 180px;
     }
 
-    nav a.text-2xl {
-        font-size: 1.25rem;
+    .horoscope-card h2 {
+        font-size: 1.3rem;
     }
 
-    nav ul {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
-        background: rgba(26, 26, 47, 0.98);
-        padding: 1.5rem;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        gap: 1rem;
+    .horoscope-card p {
+        font-size: 1rem;
+        line-height: 1.6;
     }
 
-    nav ul[style*="display: flex"] {
-        display: flex;
-    }
-
-    nav a {
-        font-size: 1.125rem;
-        margin: 0;
-    }
-
-    .burger {
-        display: block;
+    .zodiac-card {
+        padding: 1.2rem;
     }
 
     form {
-        padding: 1rem;
         max-width: 350px;
     }
 
@@ -396,18 +278,40 @@ footer .social a:hover {
     button {
         max-width: 250px;
     }
-
-    form label {
-        font-size: 1rem;
-    }
-
-    .grid-cols-3 {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    }
 }
 
 @media (max-width: 480px) {
     .grid-cols-3 {
         grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .horoscope-card {
+        padding: 1rem;
+        min-height: 150px;
+    }
+
+    .horoscope-card h2 {
+        font-size: 1.2rem;
+    }
+
+    .horoscope-card p {
+        font-size: 0.95rem;
+    }
+
+    .zodiac-card {
+        padding: 1rem;
+    }
+
+    nav {
+        height: 60px;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    .burger {
+        display: block;
     }
 }
