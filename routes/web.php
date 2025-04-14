@@ -10,11 +10,12 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::post('/horoscope/personal', [HoroscopeController::class, 'calculatePersonal'])->name('horoscope.calculate');
 Route::get('/horoscope', [HoroscopeController::class, 'index'])->name('horoscope');
+Route::post('/horoscope/personal', [HoroscopeController::class, 'calculatePersonal'])->name('horoscope.calculate');
 Route::get('/horoscope/daily', [HoroscopeController::class, 'daily'])->name('horoscope.daily');
 Route::get('/horoscope/weekly', [HoroscopeController::class, 'weekly'])->name('horoscope.weekly');
 Route::get('/horoscope/monthly', [HoroscopeController::class, 'monthly'])->name('horoscope.monthly');
+Route::get('/horoscope/{sign}', [HoroscopeController::class, 'show'])->name('horoscope.show'); // Новый маршрут
 Route::get('/compatibility', [CompatibilityController::class, 'index'])->name('compatibility');
 Route::post('/compatibility', [CompatibilityController::class, 'calculate'])->name('compatibility.calculate');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
@@ -23,6 +24,7 @@ Route::get('/interactive', [InteractiveController::class, 'index'])->name('inter
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+
 Route::get('/test', function () {
     return view('test');
 });

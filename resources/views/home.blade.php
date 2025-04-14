@@ -12,12 +12,23 @@
 
         <div class="grid-cols-3">
             @foreach([
-                'Овен' => '♈', 'Телець' => '♉', 'Близнюки' => '♊', 'Рак' => '♋',
-                'Лев' => '♌', 'Діва' => '♍', 'Терези' => '♎', 'Скорпіон' => '♏',
-                'Стрілець' => '♐', 'Козеріг' => '♑', 'Водолій' => '♒', 'Риби' => '♓'
-            ] as $sign => $icon)
+                'aries' => ['name' => 'Овен', 'icon' => '♈'],
+                'taurus' => ['name' => 'Телець', 'icon' => '♉'],
+                'gemini' => ['name' => 'Близнюки', 'icon' => '♊'],
+                'cancer' => ['name' => 'Рак', 'icon' => '♋'],
+                'leo' => ['name' => 'Лев', 'icon' => '♌'],
+                'virgo' => ['name' => 'Діва', 'icon' => '♍'],
+                'libra' => ['name' => 'Терези', 'icon' => '♎'],
+                'scorpio' => ['name' => 'Скорпіон', 'icon' => '♏'],
+                'sagittarius' => ['name' => 'Стрілець', 'icon' => '♐'],
+                'capricorn' => ['name' => 'Козеріг', 'icon' => '♑'],
+                'aquarius' => ['name' => 'Водолій', 'icon' => '♒'],
+                'pisces' => ['name' => 'Риби', 'icon' => '♓']
+            ] as $sign => $data)
                 <div class="zodiac-card">
-                    <a href="{{ route('horoscope.daily') }}">{{ $icon }} {{ $sign }}</a>
+                    <a href="{{ route('horoscope.show', $sign) }}">
+                        {{ $data['icon'] }} {{ $data['name'] }}
+                    </a>
                 </div>
             @endforeach
         </div>
