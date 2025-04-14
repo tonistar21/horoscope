@@ -6,8 +6,8 @@
 }
 
 body {
-    font-family: 'Arsenal', 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #1E1B4B 0%, #4C1D95 50%, #C4B5FD 100%);
+    font-family: 'Inter', 'Arsenal', 'Roboto', sans-serif;
+    background: radial-gradient(circle at top left, #1A1A2F, #0F0F1C, #1C1C2C);
     color: #ffffff;
     min-height: 100vh;
     overflow-x: hidden;
@@ -17,20 +17,20 @@ body {
 
 /* Контейнер */
 .container {
-    max-width: 1280px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 20px;
 }
 
 @media (min-width: 640px) {
     .container {
-        padding: 0 1.5rem;
+        padding: 30px;
     }
 }
 
 @media (min-width: 1024px) {
     .container {
-        padding: 0 2rem;
+        padding: 40px;
     }
 }
 
@@ -40,12 +40,11 @@ nav {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(30, 27, 75, 0.8);
+    background: rgba(26, 26, 47, 0.95);
     backdrop-filter: blur(12px);
     z-index: 1000;
-    padding: 1rem 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    height: 80px;
+    height: 70px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 nav .container {
@@ -53,32 +52,35 @@ nav .container {
     justify-content: space-between;
     align-items: center;
     height: 100%;
+    padding: 0 1.5rem;
 }
 
 nav a.text-2xl {
-    font-size: 1.75rem;
-    font-weight: bold;
-    background: linear-gradient(to right, #FECDD3, #C4B5FD);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    transition: transform 0.3s;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #B0B0FF;
+    text-decoration: none;
+    transition: color 0.3s, transform 0.3s;
 }
 
 nav a.text-2xl:hover {
-    transform: scale(1.05);
+    color: #00FFFF;
+    transform: scale(1.03);
 }
 
 nav ul {
     display: flex;
+    align-items: center;
+    gap: 1.5rem;
     list-style: none;
+    margin: 0;
 }
 
 nav a {
     color: #ffffff;
     text-decoration: none;
+    font-size: 1rem;
     font-weight: 500;
-    margin: 0 1rem;
     position: relative;
     transition: color 0.3s;
 }
@@ -90,7 +92,7 @@ nav a::after {
     left: 0;
     width: 0;
     height: 2px;
-    background: #FECDD3;
+    background: #8A2BE2;
     transition: width 0.3s;
 }
 
@@ -99,26 +101,29 @@ nav a:hover::after {
 }
 
 nav a:hover {
-    color: #FECDD3;
+    color: #00FFFF;
 }
 
 .burger {
     display: none;
     font-size: 1.5rem;
     color: #ffffff;
+    background: none;
+    border: none;
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: color 0.3s, transform 0.3s;
 }
 
 .burger:hover {
-    transform: scale(1.2);
+    color: #00FFFF;
+    transform: scale(1.1);
 }
 
 /* Основной контент */
 main {
-    padding-top: 100px;
-    min-height: calc(100vh - 180px);
+    padding-top: 90px; /* Уменьшено под новую высоту nav */
     flex: 1;
+    min-height: calc(100vh - 160px);
 }
 
 /* Заголовки */
@@ -127,21 +132,24 @@ h1 {
     font-weight: 700;
     text-align: center;
     margin: 2rem 0 1.5rem;
-    background: linear-gradient(to bottom, #ffffff, #C4B5FD);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: #B0B0FF;
+    transition: color 0.3s;
+}
+
+h1:hover {
+    color: #00FFFF;
 }
 
 h2 {
     font-size: 1.75rem;
     font-weight: 600;
     margin-bottom: 1rem;
+    color: #ffffff;
 }
 
 @media (min-width: 640px) {
     h1 {
-        font-size: 3.5rem;
+        font-size: 3rem;
     }
     h2 {
         font-size: 2rem;
@@ -150,34 +158,26 @@ h2 {
 
 /* Форма даты рождения */
 form {
-    background: rgba(186, 230, 253, 0.15);
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    max-width: 36rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(45, 45, 79, 0.4);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    max-width: 400px;
+    width: 100%;
     margin: 2rem auto;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(254, 205, 211, 0.3);
-    backdrop-filter: blur(4px);
-}
-
-form::before {
-    content: '🌌';
-    position: absolute;
-    top: -2rem;
-    left: -2rem;
-    font-size: 6rem;
-    opacity: 0.1;
-    transform: rotate(-30deg);
+    border: 1px solid rgba(138, 43, 226, 0.3);
+    backdrop-filter: blur(8px);
+    gap: 1rem;
 }
 
 form label {
-    display: block;
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-    color: #FECDD3;
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #B0B0FF;
+    text-align: center;
     transition: transform 0.3s;
 }
 
@@ -187,112 +187,139 @@ form:hover label {
 
 input[type="date"] {
     width: 100%;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    background: rgba(255, 255, 255, 0.05);
+    max-width: 300px;
+    padding: 0.75rem;
+    border-radius: 8px;
+    background: #2D2D4F;
     color: #ffffff;
-    border: 1px solid #C4B5FD;
-    outline: none;
+    border: 1px solid #8A2BE2;
     font-size: 1rem;
+    outline: none;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 input[type="date"]:focus {
-    border-color: #FECDD3;
-    box-shadow: 0 0 0 3px rgba(254, 205, 211, 0.3);
+    border-color: #00FFFF;
+    box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.3);
 }
 
 button {
     width: 100%;
-    margin-top: 1.5rem;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    background: linear-gradient(45deg, #C4B5FD, #FECDD3);
+    max-width: 300px;
+    padding: 0.75rem;
+    background: linear-gradient(45deg, #8A2BE2, #00FFFF);
     color: #ffffff;
     border: none;
-    font-size: 1.125rem;
+    border-radius: 25px;
+    font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: transform 0.3s, background 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
 }
 
 button:hover {
-    background: linear-gradient(45deg, #FECDD3, #C4B5FD);
-    transform: translateY(-2px);
+    transform: scale(1.05);
+    box-shadow: 0 0 12px #00FFFF;
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: left 0.3s;
+}
+
+button:hover::after {
+    left: 100%;
 }
 
 /* Карточки знаков зодиака */
+.grid-cols-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
 .zodiac-card {
-    background: rgba(30, 27, 75, 0.5);
+    background: #1E1E38;
+    border-radius: 15px;
     padding: 1.5rem;
-    border-radius: 0.75rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-    border: 1px solid rgba(196, 181, 253, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid rgba(138, 43, 226, 0.2);
     position: relative;
     overflow: hidden;
 }
 
 .zodiac-card:hover {
-    background: rgba(254, 205, 211, 0.7);
     transform: translateY(-5px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-
-.zodiac-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.2), transparent);
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.zodiac-card:hover::before {
-    opacity: 1;
+    box-shadow: 0 0 15px #8A2BE2;
 }
 
 .zodiac-card a {
     color: #ffffff;
     text-decoration: none;
+    font-size: 1.125rem;
     font-weight: 500;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    transition: color 0.3s;
+}
+
+.zodiac-card a:hover {
+    color: #00FFFF;
 }
 
 /* Гороскоп */
 .horoscope-card {
-    background: rgba(254, 205, 211, 0.2);
+    background: rgba(30, 30, 56, 0.4);
     padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s, box-shadow 0.3s;
-    border: 1px solid rgba(186, 230, 253, 0.3);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    margin: 2rem auto;
+    max-width: 600px;
 }
 
 .horoscope-card:hover {
     transform: scale(1.02);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
 }
 
 /* Футер */
 footer {
-    background: rgba(30, 27, 75, 0.7);
+    background: rgba(26, 26, 47, 0.9);
     padding: 1.5rem 0;
     text-align: center;
-    border-top: 1px solid rgba(196, 181, 253, 0.3);
-    margin-top: auto; /* Прижимаем к низу */
+    border-top: 1px solid rgba(138, 43, 226, 0.3);
+    margin-top: auto;
 }
 
 footer .container {
     font-size: 0.875rem;
-    color: #BAE6FD;
+    color: #B0B0FF;
+}
+
+footer .social a {
+    color: #B0B0FF;
+    margin: 0 0.5rem;
+    font-size: 1.25rem;
+    transition: color 0.3s, transform 0.3s;
+}
+
+footer .social a:hover {
+    color: #00FFFF;
+    transform: scale(1.2);
 }
 
 /* Анимация звезд */
@@ -315,14 +342,6 @@ footer .container {
     50% { opacity: 0.4; }
 }
 
-/* Сетка */
-.grid-cols-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
 /* Адаптивность */
 @media (max-width: 640px) {
     h1 {
@@ -330,23 +349,29 @@ footer .container {
     }
 
     nav {
-        height: 60px; /* Меньше для мобильных */
+        height: 60px;
     }
 
-    main {
-        padding-top: 80px; /* Уменьшаем отступ */
+    nav .container {
+        padding: 0 1rem;
+    }
+
+    nav a.text-2xl {
+        font-size: 1.25rem;
     }
 
     nav ul {
         display: none;
         flex-direction: column;
+        align-items: center;
         position: absolute;
         top: 60px;
         left: 0;
         right: 0;
-        background: rgba(30, 27, 75, 0.9);
-        padding: 1rem;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background: rgba(26, 26, 47, 0.98);
+        padding: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        gap: 1rem;
     }
 
     nav ul[style*="display: flex"] {
@@ -354,15 +379,30 @@ footer .container {
     }
 
     nav a {
-        margin: 0.5rem 0;
+        font-size: 1.125rem;
+        margin: 0;
     }
 
     .burger {
         display: block;
     }
 
+    form {
+        padding: 1rem;
+        max-width: 350px;
+    }
+
+    input[type="date"],
+    button {
+        max-width: 250px;
+    }
+
+    form label {
+        font-size: 1rem;
+    }
+
     .grid-cols-3 {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     }
 }
 

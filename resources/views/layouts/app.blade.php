@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Зірковий Гороскоп</title>
-    <link href="https://fonts.googleapis.com/css2?family=Arsenal:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Arsenal:wght@400;700&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
@@ -21,11 +21,18 @@
             </ul>
         </div>
     </nav>
-    <main class="container pt-24">
+    <main>
         @yield('content')
     </main>
     <footer>
-        <div class="container">© 2025 Зірковий Гороскоп</div>
+        <div class="container">
+            © 2025 Зірковий Гороскоп
+            <div class="social">
+                <a href="#">📸</a>
+                <a href="#">🐦</a>
+                <a href="#">📱</a>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
