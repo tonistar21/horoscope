@@ -17,8 +17,14 @@ class HoroscopeController extends Controller
     {
         $horoscopes = Horoscope::where('type', 'daily')->whereDate('date', today())->get();
         if ($horoscopes->isEmpty()) {
-            // Заглушка, если данных нет
-            $horoscopes = collect($this->getDefaultHoroscopes('daily'));
+            $horoscopes = collect($this->getDefaultHoroscopes('daily'))->map(function ($item, $sign) {
+                return (object) [
+                    'zodiac_sign' => $sign,
+                    'prediction' => $item['prediction'],
+                    'type' => $item['type'],
+                    'date' => Carbon::today(),
+                ];
+            });
         }
         return view('horoscope.daily', compact('horoscopes'));
     }
@@ -29,7 +35,14 @@ class HoroscopeController extends Controller
             ->whereDate('date', '>=', now()->startOfWeek())
             ->get();
         if ($horoscopes->isEmpty()) {
-            $horoscopes = collect($this->getDefaultHoroscopes('weekly'));
+            $horoscopes = collect($this->getDefaultHoroscopes('weekly'))->map(function ($item, $sign) {
+                return (object) [
+                    'zodiac_sign' => $sign,
+                    'prediction' => $item['prediction'],
+                    'type' => $item['type'],
+                    'date' => Carbon::today(),
+                ];
+            });
         }
         return view('horoscope.weekly', compact('horoscopes'));
     }
@@ -40,7 +53,14 @@ class HoroscopeController extends Controller
             ->whereDate('date', '>=', now()->startOfMonth())
             ->get();
         if ($horoscopes->isEmpty()) {
-            $horoscopes = collect($this->getDefaultHoroscopes('monthly'));
+            $horoscopes = collect($this->getDefaultHoroscopes('monthly'))->map(function ($item, $sign) {
+                return (object) [
+                    'zodiac_sign' => $sign,
+                    'prediction' => $item['prediction'],
+                    'type' => $item['type'],
+                    'date' => Carbon::today(),
+                ];
+            });
         }
         return view('horoscope.monthly', compact('horoscopes'));
     }
@@ -64,7 +84,7 @@ class HoroscopeController extends Controller
                 'zodiac_sign' => $signKey,
                 'prediction' => $this->getDefaultHoroscopes('daily')[$signKey]['prediction'],
                 'type' => 'daily',
-                'date' => today(),
+                'date' => Carbon::today(),
             ];
         }
 
@@ -89,7 +109,7 @@ class HoroscopeController extends Controller
                 'zodiac_sign' => $signKey,
                 'prediction' => $defaultHoroscopes[$signKey]['prediction'],
                 'type' => 'daily',
-                'date' => today(),
+                'date' => Carbon::today(),
             ];
         }
 
@@ -159,7 +179,7 @@ class HoroscopeController extends Controller
 
     private function getDefaultHoroscopes($type)
     {
-        $predictions = [
+        return [
             'aries' => [
                 'prediction' => 'Овен: Сьогодні твоя енергія на піку! Використай її для нових починань.',
                 'type' => $type,
@@ -209,7 +229,5 @@ class HoroscopeController extends Controller
                 'type' => $type,
             ],
         ];
-
-        return $predictions;
     }
 }
