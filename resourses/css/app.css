@@ -1,9 +1,0 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-body {
-    font-family: 'Arsenal', sans-serif;
-    background: linear-gradient(to bottom, #1e1b4b, #4c1d95);
-    color: white;
-}
